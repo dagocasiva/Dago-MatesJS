@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Dago Ezequiel Casiva</h1>
 <h3 align="center">A passionate frontend developer from Córdoba, Argentina</h3>
 
-- 🔭 I’m currently working on [DagoMates](https://github.com/dagocasiva/DagoMates)
+- 🔭 I’m currently working on [Js](https://github.com/dagocasiva/Js)
 
 - 🌱 I’m currently learning **JavaScript**
 
