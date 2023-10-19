@@ -21,7 +21,7 @@ let prod5 = new Prod (5,"Mate Personalizado", 10000)
 let catalogo = [prod1, prod2, prod3, prod4, prod5]
 
 function filtro(){
-    let busqueda = prompt("Ingresa lo que estás buscando").trim().toUpperCase()
+    let busqueda = prompt("Ingresa lo que estás buscando (Ver en consola)").trim().toUpperCase()
     let filtrado = catalogo.filter((prod)=>prod.descripcion.toUpperCase().includes(busqueda))
     if (filtrado.length > 0){
         console.table(filtrado)
@@ -88,4 +88,10 @@ const btn = document.querySelector(".boton")
 btn.addEventListener('click', (e) => {
     e.preventDefault()
     comprar()
+})
+
+const filt = document.querySelector(".filtro")
+filt.addEventListener('click', (e) => {
+    e.preventDefault()
+    filtro()
 })
