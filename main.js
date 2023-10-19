@@ -79,21 +79,13 @@ const comprar = () => {
     } else {
         alert("El codigo ingresado del producto que buscas no existe")
     }
-
 }
 
 
 
 
-//Estructura HTML del proyecto ***
-
-//Variables de JS necesarios***
-
-//Funciones esenciales del proceso a simular ***
-
-//Objetos de JS ***
-
-//Arrays ***
-
-//Métodos de búsqueda y filtrado sobre el Array ***
-
+const btn = document.querySelector(".boton")
+btn.addEventListener('click', (e) => {
+    e.preventDefault()
+    comprar()
+})
