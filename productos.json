@@ -1,0 +1,32 @@
+[
+    {
+        "img": "./img/termo-stanley.jpg",
+        "id": "termo-1",
+        "descripcion": "Termo Stanley",
+        "precio": 15000
+    },
+    {
+        "img": "./img/termo-acero.jpg",
+        "id": "termo-2",
+        "descripcion": "Termo Acero Inox",
+        "precio": 7000
+    },
+    {
+        "img": "./img/mate-camionero.jpg",
+        "id": "mate-1",
+        "descripcion": "Mate Camionero",
+        "precio": 15000
+    },
+    {
+        "img": "./img/mate-imperial.jpg",
+        "id": "mate-2",
+        "descripcion": "Mate Imperial",
+        "precio": 7000
+    },
+    {
+        "img": "./img/mate-personalizado.webp",
+        "id": "mate-3",
+        "descripcion": "Mate Personalizado",
+        "precio": "10000"
+    }
+]
