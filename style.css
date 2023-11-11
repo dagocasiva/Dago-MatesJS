@@ -70,12 +70,23 @@ main .hero div a:hover {
     margin: 2%;
     border: 10px solid #000000;
     background-color: white;
+    box-shadow: 2px 0px 25px 0px rgba(255,255,255,0.75);
+    -webkit-box-shadow: 2px 0px 25px 0px rgba(255,255,255,0.75);
+    -moz-box-shadow: 2px 0px 25px 0px rgba(255,255,255,0.75);
+    transition: 1s;
+}
+
+.cartaProd:hover{
+        transform: scale(1.05);
 }
 
 .prodCarrito {
     background-color: white;
     border: 3px solid black;
     border-radius: 15px;
+    box-shadow: 2px 0px 25px 0px rgba(255,255,255,1);
+    -webkit-box-shadow: 2px 0px 25px 0px rgba(255,255,255,1);
+    -moz-box-shadow: 2px 0px 25px 0px rgba(255,255,255,1);
 }
 
 .tituloProd, .precioProd{
@@ -107,7 +118,7 @@ main .hero div a:hover {
 }
 
 .carrito{
-    height: 40vh;
+    height: 60vh;
     background-color: #F1DABF;
 }
 
@@ -115,6 +126,10 @@ main .hero div a:hover {
     display: flex;
 }
 
+.prodCarrito p{
+    margin: 1%;
+    padding: 1%;
+}
 
 .carritoProductos {
     width: 80%;
@@ -122,6 +137,17 @@ main .hero div a:hover {
 
 .total {
     width: 20%;
+}
+
+
+.botonComprar{
+    transition: 1s;
+}
+
+.botonComprar:hover{
+    transform: scale(1.05);
+    background-color: white;
+    color: #000000;
 }
 
 .carritoProductos {
@@ -137,7 +163,9 @@ main .hero div a:hover {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    padding: 1%;
 }
+
 
 #formulario{
     color: white;
@@ -174,4 +202,29 @@ button{
 #submit{
     font-size: 80%;
     padding: 0.5%;
+}
+
+.eliminar{
+    transition: 1s;
+}
+
+.eliminar:hover{
+    background-color: tomato;
+    color: white;
+}
+
+.contenedorVacio{
+    color: white;
+    font-size: 150%;
+    font-weight: 300;
+}
+
+footer {
+    background-color: #233143;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
 }

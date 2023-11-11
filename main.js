@@ -1,3 +1,4 @@
+// Uso de librería SweetAlert para pedir el email del usuario al ingresar
 
 (async () => {
     const { value: email } = await Swal.fire({
@@ -11,7 +12,7 @@
     }
 })()
 
-
+// Función constructura para los productos de mi catalógo
 const Prod = function(img, id, descripcion, precio){
     this.img = img
     this.id = id
@@ -19,14 +20,18 @@ const Prod = function(img, id, descripcion, precio){
     this.precio = precio
 }
 
-// let prod1 = new Prod ("./img/termo-stanley.jpg", "termo-1","Termo Stanley", 15000)
-// let prod2 = new Prod ("./img/termo-acero.jpg", "termo-2", "Termo Acero Inox", 7000)
-// let prod3 = new Prod ("./img/mate-imperial.png", "mate-1","Mate Imperial", 10000)
-// let prod4 = new Prod ("./img/mate-camionero.jpg", "mate-2", "Mate Camionero", 6000)
-// let prod5 = new Prod ("./img/mate-personalizado.webp", "mate-3", "Mate Personalizado", 10000)
+// Forma anterior de definir estos productos, luego lo cambie por un JSON para luego traerlos con Fetch 
 
+// // let prod1 = new Prod ("./img/termo-stanley.jpg", "termo-1","Termo Stanley", 15000)
+// // let prod2 = new Prod ("./img/termo-acero.jpg", "termo-2", "Termo Acero Inox", 7000)
+// // let prod3 = new Prod ("./img/mate-imperial.png", "mate-1","Mate Imperial", 10000)
+// // let prod4 = new Prod ("./img/mate-camionero.jpg", "mate-2", "Mate Camionero", 6000)
+// // let prod5 = new Prod ("./img/mate-personalizado.webp", "mate-3", "Mate Personalizado", 10000)
+
+//Array de mis productos
 let catalogo = []
 
+// Fetch donde traigo los productos creados con JSON
 fetch('productos.json')
     .then(response => response.json())
     .then(data => {
@@ -36,15 +41,15 @@ fetch('productos.json')
     })
     .catch(error => console.error('Error al cargar los productos:', error));
 
-
+// Declaro variables a través de querySelector
 const contenedor = document.querySelector(".productos")
 let botonesAgregar = document.querySelectorAll(".agregarProd")
 let botonesEliminar = document.querySelectorAll(".eliminar")
 const numero = document.querySelector(".numero")
 const total = document.querySelector(".total")
 
+// Funcion que muestra los productos que busque el usuario, en caso de no existir, es decir, que el array esté vacío, devuelve el mensaje de que no encontraron coincidencias 
 function mostrarProductos(productos){
-    console.log('Mostrando productos:', productos);
     contenedor.innerHTML = ""
     if(productos.length === 0){
         contenedor.innerHTML = '<p class="contenedorVacio">No se encontraron coincidencias</p>'
@@ -68,7 +73,7 @@ function mostrarProductos(productos){
         actualizarBotonesAgregar()
     }
 
-
+// Funcion para actualizar la agregación de productos al carrito
 function actualizarBotonesAgregar(){
     botonesAgregar = document.querySelectorAll(".agregarProd");
 
@@ -77,6 +82,7 @@ function actualizarBotonesAgregar(){
     })
 }
 
+// Funcion para actualizar la eliminación productos del carrito
 function actualizarBotonesEliminar(){
     botonesEliminar = document.querySelectorAll(".eliminar");
 
@@ -85,9 +91,10 @@ function actualizarBotonesEliminar(){
     })
 }
 
+// Array con los productos
 const productosCarrito = [];
 
-
+// Funcion para agregar productos al carrito
 function agregar(e){
     const idBoton = e.currentTarget.id
     const agregado = catalogo.find(prod => prod.id === idBoton)
@@ -104,7 +111,7 @@ function agregar(e){
 }
 
 
-
+// Funcion para eliminar productos del carrito
 function eliminar(e){
     const idBoton = e.currentTarget.id
     const index = productosCarrito.findIndex(prod => prod.id === idBoton);
@@ -116,16 +123,17 @@ function eliminar(e){
 }
 
 
-
+// Funcion que actualiza el numero que muestra la cantidad de productos en el carrito
 function actualizarNumero(){
     let nuevoNumero = productosCarrito.length
     numero.innerHTML = nuevoNumero
 }
 
+
 const carritoProductos = document.querySelector(".carritoProductos")
 
 
-
+// Funcion para mostrar el carrito con sus productos en caso de tener, caso contrario, devuelve el mensaje "El carrito está vacío"
 function mostrarCarrito(){
     carritoProductos.innerHTML = ""
     if(productosCarrito.length === 0){
@@ -159,6 +167,7 @@ function mostrarCarrito(){
     actualizarTotal()
 } 
 
+// Funcion que actualiza el precio total de los productos del carrito
 function actualizarTotal(){
     const resultadoTotal = productosCarrito.reduce((acc,prod) => acc + (prod.precio * prod.cantidad), 0)
     total.innerHTML = 
@@ -171,6 +180,7 @@ function actualizarTotal(){
 
 const botonComprar = document.querySelector(".botonComprar")
 
+// Funcion que simula la finalizacion de la compra, utilizando SweetAlert que devuelve un error si se intenta comprar con el carrito vacío, en caso contrario, finaliza la compra correctamente
 botonComprar.addEventListener("click", comprar)
 function comprar(){
     productosCarrito.length === 0 ? Swal.fire({
@@ -189,10 +199,7 @@ function comprar(){
     actualizarNumero()
 }
 
-const localidades = document.querySelector(".localidades")
-
-
-
+// Defino mi buscador de productos dentro de un formulario creado en HTML, para luego usar un filter dentro de mi catalogo con la busqueda que realice el usuario. A la vez utilizo localStorage para guardar la busqueda realizada 
 let form = document.querySelector("#formulario")
 form.addEventListener("submit", function (e){
     e.preventDefault()
@@ -203,11 +210,13 @@ form.addEventListener("submit", function (e){
     mostrarProductos(filtrado)
 }) 
 
+// Defino una constante que busca en el localStorage el item resultadosBusqueda, en caso de existir, realiza un JSON.parse de los resultados 
 const resultadosGuardados = localStorage.getItem("resultadosBusqueda");
 if (resultadosGuardados) {
 const resultadosParseados = JSON.parse(resultadosGuardados);
 mostrarProductos(resultadosParseados);
 }
 
+// Llamo a la funcion mostrarProductos con mi catalogo para que cada vez que se cargue la pagina muestre todos los productos del array
 mostrarProductos(catalogo);
 
