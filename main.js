@@ -12,12 +12,14 @@
     }
 })()
 
-// Función constructura para los productos de mi catalógo
-const Prod = function(img, id, descripcion, precio){
-    this.img = img
-    this.id = id
-    this.descripcion = descripcion
-    this.precio = precio
+// Clase constructura para los productos de mi catalógo
+class Prod {
+    constructor(img, id, descripcion, precio){
+        this.img = img
+        this.id = id
+        this.descripcion = descripcion
+        this.precio = precio
+    }
 }
 
 // Forma anterior de definir estos productos, luego lo cambie por un JSON para luego traerlos con Fetch 
@@ -36,7 +38,6 @@ fetch('productos.json')
     .then(response => response.json())
     .then(data => {
     catalogo = data.map(prod => new Prod(prod.img, prod.id, prod.descripcion, prod.precio));
-    console.log(catalogo);
     mostrarProductos(catalogo);
     })
     .catch(error => console.error('Error al cargar los productos:', error));

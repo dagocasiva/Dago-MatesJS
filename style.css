@@ -135,13 +135,29 @@ main .hero div a:hover {
     width: 80%;
 }
 
-.total {
-    width: 20%;
+.totalDiv{
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-direction: column;
 }
 
+.total{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.precioTotal{
+    display: flex;
+    margin: 10px;
+}
 
 .botonComprar{
     transition: 1s;
+    height: 50px;
 }
 
 .botonComprar:hover{
